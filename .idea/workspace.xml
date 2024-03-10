@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c008da2c-e5a4-42a5-af03-831d533b24af" name="Changes" comment="calculations">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="c008da2c-e5a4-42a5-af03-831d533b24af" name="Changes" comment="remove old folder">
+      <change afterPath="$PROJECT_DIR$/Toxic Products for Dogs.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/database.ipynb" afterDir="false" />
     </list>
@@ -105,7 +105,8 @@
       <workItem from="1709199813461" duration="4893000" />
       <workItem from="1709214270466" duration="2835000" />
       <workItem from="1709217742860" duration="1423000" />
-      <workItem from="1709319442002" duration="6042000" />
+      <workItem from="1709319442002" duration="6731000" />
+      <workItem from="1710067655591" duration="3595000" />
     </task>
     <task id="LOCAL-00001" summary="starting project">
       <option name="closed" value="true" />
@@ -147,7 +148,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709324373515</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="remove old folder">
+      <option name="closed" value="true" />
+      <created>1709457306821</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1709457306821</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -169,7 +178,8 @@
     <MESSAGE value="import database" />
     <MESSAGE value="ignore folder" />
     <MESSAGE value="calculations" />
-    <option name="LAST_COMMIT_MESSAGE" value="calculations" />
+    <MESSAGE value="remove old folder" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove old folder" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/SPAN$app.coverage" NAME="app Coverage Results" MODIFIED="1709200187891" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/PetInfoApp" />
