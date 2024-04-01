@@ -1,11 +1,17 @@
+import requests
+from bs4 import BeautifulSoup
+
+
 def get_nutrients(row_index, dataframe):
     # Extract nutrient values for the specified row
     nutrient_values = dataframe.loc[
         row_index, ['allergens'] + list(dataframe.loc[row_index, 'energy-kcal_100g':].index)]
     return nutrient_values
 
+
 negative_ingredients = ["saturated-fat_100g", "trans-fat_100g", "cholesterol_100g", "sugars_100g",
                         "-insoluble-fiber_100g", "salt_100g", "sodium_100g", "alcohol_100g", "caffeine_100g"]
+
 
 def calculate_nutritional_score(values, max_calories, allergens):
     total_score = 0
@@ -47,7 +53,7 @@ def calculate_nutritional_score(values, max_calories, allergens):
     if allergen_ingredients in allergens:
         return "Food not suitable for pet!"
     # Calculate the caloric percentage
-    if (str(total_calories).replace('.', '', 1).isdigit()):
+    if str(total_calories).replace('.', '', 1).isdigit():
         caloric_percentage = (float(total_calories) / max_calories) * 100 if max_calories > 0 else "N/A"
         print("Caloric Percentage:", caloric_percentage)
 
@@ -56,7 +62,7 @@ def calculate_nutritional_score(values, max_calories, allergens):
     total_volume = 0
     # Iterate through each nutrient
     for nutrient, value in values.items():
-        if (str(value).replace('.', '', 1).isdigit()):
+        if str(value).replace('.', '', 1).isdigit():
             if nutrient in recommended_values:
                 # Calculate the percentage of recommended value
                 percentage = (float(value) / float(recommended_values[nutrient])) * 100
@@ -77,11 +83,11 @@ def calculate_nutritional_score(values, max_calories, allergens):
     # Calculate the final score as a percentage of filled nutritional needs
     final_score = (total_score / total_possible_score) * 100 if total_possible_score > 0 else "Not enough information"
 
-    if present_nutrients == []:
+    if not present_nutrients:
         points = ""
 
     for nutrient, value in values.items():
-        if (str(value).replace('.', '', 1).isdigit()):
+        if str(value).replace('.', '', 1).isdigit():
             if nutrient in negative_ingredients:
                 points -= round((float(value) / total_volume) * 10)
             else:
@@ -99,9 +105,25 @@ def calculate_nutritional_score(values, max_calories, allergens):
             nutriscore = "C"
         elif points <= 6:
             nutriscore = "B"
-        elif points <= 8:
+        elif points <= 10:
             nutriscore = "A"
     else:
         nutriscore = "Not enough information"
 
     return final_score, nutriscore
+
+
+def scrape_article_info(url):
+    # Send a GET request to the URL
+    response = requests.get(url)
+
+    # Parse the HTML content
+    soup = BeautifulSoup(response.content, 'html.parser')
+
+    # Extract the article title
+    title = soup.find('title').get_text()
+
+    # Extract the article image URL (assuming it's in the <meta property="og:image"> tag)
+    image_url = soup.find('meta', property='og:image')['content']
+
+    return title, image_url

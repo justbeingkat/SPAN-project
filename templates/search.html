@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}
+Nutritional Score Calculator
+{% endblock %}
+
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutritional Score Calculator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Nutritional Score Calculator</h1>
+        <form id="score-form">
+            <label for="food-dropdown">Select a food:</label>
+            <select id="food-dropdown" name="food-dropdown">
+                {% for food_option in food_options %}
+                    <option value="{{ food_option }}">{{ food_option }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit">Calculate Score</button>
+        </form>
+        <div id="result"></div>
+    </div>
+{% endblock content %}
+{% block scripts %}
+    <script>
+        $(document).ready(function () {
+            $('#score-form').submit(function (event) {
+                event.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: '/calculate-score',
+                    data: $(this).serialize(),
+                    success: function (response) {
+                        $('#result').html('<p>Score: ' + response.score + ', Nutri score: ' + response['nutri score'] + '</p>');
+                    },
+                    error: function (xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock scripts %}
