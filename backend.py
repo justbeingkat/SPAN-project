@@ -1,8 +1,19 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, redirect, url_for
 from main import calculate_nutritional_score, scrape_article_info
+from extensions import init_app, db
 import pandas as pd
+from flask_migrate import Migrate
+from models import Profile
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///profiles.db'  # SQLite database file path
+init_app(app)
+migrate = Migrate(app, db)
+
+
+with app.app_context():
+    # Create the database tables before running the application
+    db.create_all()
 
 data = pd.read_csv("cleaned_data.csv", low_memory=False)
 allergens = pd.read_csv("allergens.csv")
@@ -29,6 +40,20 @@ def profile():
     return render_template('profile.html')
 
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username_or_email = request.form['username_or_email']
+        password = request.form['password']
+        # Retrieve the user from the database by username or email
+        user = Profile.query.filter((Profile.username == username_or_email) | (Profile.email == username_or_email)).first()
+        if user.password == password:
+            return render_template('login.html', message="Successful Login!")
+        else:
+            return render_template('login.html', message="Invalid username or password. Please try again.")
+    return render_template('login.html')
+
+
 @app.route('/search')
 def search():
     return render_template('search.html', food_options=data['product_name'].tolist())
@@ -37,17 +62,22 @@ def search():
 @app.route('/create-profile', methods=['GET', 'POST'])
 def create_profile():
     if request.method == 'POST':
-        # Handle form submission to create the profile
-        # You can access form data using request.form
         username = request.form['username']
         password = request.form['password']
-        # Process the form data and create the profile
+        email = request.form['email']
+        # Check if the username already exists
+        existing_profile = Profile.query.filter_by(username=username).first()
+        if existing_profile:
+            return render_template('create-profile.html', message='Username already exists')
 
-        # For now, let's just return a success message
-        return jsonify({'message': 'Profile created successfully'})
+        # Create a new profile
+        new_profile = Profile(username=username, password=password, email=email)
+        db.session.add(new_profile)
+        db.session.commit()
+        return render_template('create-profile.html', message='Profile created successfully!')
 
-    # If it's a GET request, render the template for creating a profile
     return render_template('create-profile.html')
+
 
 @app.route('/calculate-score', methods=['POST'])
 def calculate_score():

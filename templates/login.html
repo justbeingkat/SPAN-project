@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}
+Log In
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Log In</h1>
+        <form id="login-form" method="post">
+            <label for="username_or_email">Username or Email:</label><br>
+            <input type="text" id="username_or_email" name="username_or_email"><br>
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password"><br>
+            <button type="submit">Log In</button>
+        </form>
+        {% if message %}
+            <p>{{ message }}</p>
+        {% endif %}
+    </div>
+{% endblock %}

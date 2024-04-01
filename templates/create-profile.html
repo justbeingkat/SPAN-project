@@ -5,14 +5,20 @@ Create Profile
 {% endblock %}
 
 {% block content %}
-<div class="profile-container">
-    <h2>Create Your Profile</h2>
-    <form method="post" action="/create-profile">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <button type="submit" class="button create-profile-button">Create Profile</button>
-    </form>
-</div>
+    <div class="container">
+        <h1>Create Profile</h1>
+        <form id="profile-form" method="post">
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" name="username"><br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email"><br>
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password"><br>
+            <button type="submit">Create Profile</button>
+        </form>
+        {% if message %}
+            <p>{{ message }}</p>
+            <a href="/login">Log In</a>
+        {% endif %}
+    </div>
 {% endblock %}
