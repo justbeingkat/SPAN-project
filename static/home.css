@@ -1,0 +1,12 @@
+/* styles.css */
+
+.container {
+    max-width: 600px; /* Adjust the max-width as needed */
+    margin: 0 auto; /* Center the container horizontally */
+}
+
+#food-dropdown {
+    max-width: 300px !important; /* Adjust the maximum width of the dropdown */
+}
+
+/* Add additional styling as needed */
