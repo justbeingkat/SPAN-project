@@ -80,4 +80,22 @@
 .button:hover {
     opacity: 0.8;
 }
+
+.user-icon {
+    position: fixed; /* Position the icon relative to the viewport */
+    top: 10px; /* Adjust top distance from the top of the viewport */
+    right: 10px; /* Adjust right distance from the right of the viewport */
+    display: flex; /* Use flexbox to align items */
+    align-items: center; /* Vertically center items */
+}
+
+.user-icon img {
+    width: 30px; /* Adjust icon width */
+    height: 30px; /* Adjust icon height */
+    margin-right: 5px; /* Add a small margin between icon and text */
+}
+
+.user-icon span {
+    color: black; /* Set text color */
+}
 /* Add additional styling as needed */

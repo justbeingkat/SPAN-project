@@ -1,24 +1,34 @@
-from flask import Flask, render_template, request, jsonify, redirect, url_for
+from flask import Flask, render_template, request, jsonify, redirect, url_for, flash
 from main import calculate_nutritional_score, scrape_article_info
 from extensions import init_app, db
 import pandas as pd
 from flask_migrate import Migrate
 from models import Profile
+from werkzeug.security import check_password_hash
+from flask_login import LoginManager
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///profiles.db'  # SQLite database file path
 init_app(app)
 migrate = Migrate(app, db)
 
+login_manager = LoginManager(app)
+login_manager.login_view = 'login'  # Specify the login view
 
 with app.app_context():
     # Create the database tables before running the application
     db.create_all()
 
+
 data = pd.read_csv("cleaned_data.csv", low_memory=False)
 allergens = pd.read_csv("allergens.csv")
 articles = [{'link': 'https://www.huffpost.com/entry/thanksgiving-food-dangerous-pets_l_6554e57fe4b0e476701266eb'},
             {'link': 'https://www.foxnews.com/lifestyle/pet-lovers-roundup-deals-useful-pet-supplies-accessories'},]
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return Profile.query.get(int(user_id))
 
 
 @app.route('/')
@@ -47,10 +57,15 @@ def login():
         password = request.form['password']
         # Retrieve the user from the database by username or email
         user = Profile.query.filter((Profile.username == username_or_email) | (Profile.email == username_or_email)).first()
-        if user.password == password:
-            return render_template('login.html', message="Successful Login!")
+        if user and check_password_hash(user.password, password):
+            # Login successful
+            flash("Successful Login!", "success")
+            # Redirect to a different page after successful login
+            return redirect(url_for('profile'))  # Redirect to the profile page
         else:
-            return render_template('login.html', message="Invalid username or password. Please try again.")
+            # Invalid username or password
+            flash("Invalid username or password. Please try again.", "error")
+            return render_template('login.html')
     return render_template('login.html')
 
 
