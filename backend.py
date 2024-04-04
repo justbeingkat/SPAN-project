@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 from main import calculate_nutritional_score, scrape_article_info
 from extensions import init_app, db
 import pandas as pd
@@ -24,11 +24,6 @@ data = pd.read_csv("cleaned_data.csv", low_memory=False)
 allergens = pd.read_csv("allergens.csv")
 articles = [{'link': 'https://www.huffpost.com/entry/thanksgiving-food-dangerous-pets_l_6554e57fe4b0e476701266eb'},
             {'link': 'https://www.foxnews.com/lifestyle/pet-lovers-roundup-deals-useful-pet-supplies-accessories'},]
-
-
-@login_manager.user_loader
-def load_user(user_id):
-    return Profile.query.get(int(user_id))
 
 
 @app.route('/')
@@ -97,14 +92,15 @@ def create_profile():
 @app.route('/calculate-score', methods=['POST'])
 def calculate_score():
     selected_food = request.form.get('food-dropdown')
-    # Define relevant columns
     relevant_columns = ['allergens'] + list(data.loc[data['product_name'] == selected_food, "energy-kcal_100g":].columns)
-    # Filter the DataFrame to include only the selected food and relevant columns
     filtered_data = data.loc[data['product_name'] == selected_food, relevant_columns]
-    # Convert the filtered data to a dictionary
     nutrient_values = filtered_data.to_dict('records')[0]
     scores = calculate_nutritional_score(nutrient_values, 950, allergens)
     return jsonify({'score': scores[0], 'nutri score': scores[1]})
+
+@login_manager.user_loader
+def load_user(user_id):
+    return Profile.query.get(int(user_id))
 
 
 if __name__ == '__main__':

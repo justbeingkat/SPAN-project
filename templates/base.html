@@ -4,27 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
+    {% block scripts %}
+    {% endblock %}
 </head>
 <body>
-    {% block content %}
-    {% endblock %}
+<div class="container">
+        {% block content %}
+        {% endblock %}
 
-    <div class="bottom-nav">
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/search">Search</a>
-        <a href="/profile">Profile</a>
-    </div>
+        <!-- Bottom navigation bar -->
+        <div class="bottom-nav">
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/search">Search</a>
+            <a href="/profile">Profile</a>
+        </div>
+
         <div class="user-icon">
-        {% if current_user.is_authenticated %}
-            <span>{{ current_user.username }}</span> <!-- Display username if logged in -->
-            <img src="/static/images/guest.png" alt="Logged In Icon">
-        {% else %}
-            <span>Guest (Log In)</span> <!-- Display 'Guest' if not logged in -->
-            <img src="/static/images/guest.png" alt="Logged Out Icon">
-        {% endif %}
-    </div>
-
+            {% if current_user.is_authenticated %}
+                <span>{{ current_user.username }}</span> <!-- Display username if logged in -->
+                <img src="/static/images/guest.png" alt="Logged In Icon">
+            {% else %}
+                <span>Guest (Log In)</span> <!-- Display 'Guest' if not logged in -->
+                <img src="/static/images/guest.png" alt="Logged Out Icon">
+            {% endif %}
+        </div>
+</div>
 </body>
 </html>

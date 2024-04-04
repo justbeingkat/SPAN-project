@@ -5,11 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c008da2c-e5a4-42a5-af03-831d533b24af" name="Changes" comment="front end update">
+      <change afterPath="$PROJECT_DIR$/static/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/jquery-3.6.0.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/SPAN.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SPAN.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extensions.py" beforeDir="false" afterPath="$PROJECT_DIR$/extensions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/base.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/create-profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/create-profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/search.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,8 +97,8 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/static/images" />
       <recent name="$PROJECT_DIR$/static" />
+      <recent name="$PROJECT_DIR$/static/images" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/templates" />
     </key>
@@ -182,6 +190,7 @@
       <workItem from="1711643676070" duration="1839000" />
       <workItem from="1711945212872" duration="2701000" />
       <workItem from="1711951317940" duration="13711000" />
+      <workItem from="1712244518441" duration="5386000" />
     </task>
     <task id="LOCAL-00001" summary="starting project">
       <option name="closed" value="true" />
@@ -247,7 +256,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711992943055</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="front end update">
+      <option name="closed" value="true" />
+      <created>1712245632138</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1712245632138</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -276,9 +293,9 @@
     <option name="LAST_COMMIT_MESSAGE" value="front end update" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SPAN$Flask__backend_py_.coverage" NAME="Flask (backend.py) Coverage Results" MODIFIED="1712244442429" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/SPAN$backend.coverage" NAME="backend Coverage Results" MODIFIED="1711643654111" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SPAN$Flask__backend_py_.coverage" NAME="Flask (backend.py) Coverage Results" MODIFIED="1712250261964" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/SPAN$backend.coverage" NAME="backend Coverage Results" MODIFIED="1712245699953" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/SPAN$app.coverage" NAME="app Coverage Results" MODIFIED="1709200187891" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/PetInfoApp" />
-    <SUITE FILE_PATH="coverage/SPAN$SPAN.coverage" NAME="SPAN Coverage Results" MODIFIED="1711951409651" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/SPAN$SPAN.coverage" NAME="SPAN Coverage Results" MODIFIED="1712245656231" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>

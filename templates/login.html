@@ -5,7 +5,6 @@ Log In
 {% endblock %}
 
 {% block content %}
-    <div class="container">
         <h1>Log In</h1>
         <form id="login-form" method="post">
             <label for="username_or_email">Username or Email:</label><br>
@@ -17,5 +16,4 @@ Log In
         {% if message %}
             <p>{{ message }}</p>
         {% endif %}
-    </div>
 {% endblock %}

@@ -1,25 +1,36 @@
 /* CSS for the bottom navigation bar */
+.container {
+    width: 80%; /* Adjust the width as needed */
+    max-width: 600px; /* Set a maximum width if desired */
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 20px;
+    border: 1px solid #ccc; /* Optional: Add border for visualization */
+    border-radius: 10px; /* Optional: Add border radius for rounded corners */
+    background-color: #f9f9f9; /* Optional: Add background color */
+    text-align: center; /* Center the content horizontally */
+    position: relative; /* Set position relative for absolute positioning of bottom nav */
+    overflow-y: auto; /* Add overflow-y property to enable vertical scrolling */
+    height: calc(100vh - 70px); /* Adjust for the height of the bottom navigation bar */
+}
+
+/* CSS for the bottom navigation bar */
 .bottom-nav {
-    position: fixed;
+    position: absolute;
     bottom: 0;
     left: 0;
-    width: 100%;
+    width: calc(100% - 20px); /* Adjust width to match container width */
     background-color: #333;
-    padding: 10px 0;
+    padding: 10px;
+    color: #fff;
     text-align: center;
+    border-radius: 10px;
+    z-index: 100;
 }
 
 .bottom-nav a {
     color: white;
     text-decoration: none;
     padding: 10px;
-}
-
-/* CSS for the container */
-.container {
-    padding-bottom: 60px; /* Adjust according to the height of the bottom navigation bar */
-    text-align: center; /* Center align the content */
-    margin-top: 50px; /* Add margin to center vertically */
 }
 
 #food-dropdown {
@@ -82,7 +93,7 @@
 }
 
 .user-icon {
-    position: fixed; /* Position the icon relative to the viewport */
+    position: absolute; /* Position the icon relative to the viewport */
     top: 10px; /* Adjust top distance from the top of the viewport */
     right: 10px; /* Adjust right distance from the right of the viewport */
     display: flex; /* Use flexbox to align items */

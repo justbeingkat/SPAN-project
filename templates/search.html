@@ -5,15 +5,6 @@ Nutritional Score Calculator
 {% endblock %}
 
 {% block content %}
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nutritional Score Calculator</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='base.css') }}">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</head>
-<body>
-    <div class="container">
         <h1>Nutritional Score Calculator</h1>
         <form id="score-form">
             <label for="food-dropdown">Select a food:</label>
@@ -25,12 +16,14 @@ Nutritional Score Calculator
             <button type="submit">Calculate Score</button>
         </form>
         <div id="result"></div>
-    </div>
 {% endblock content %}
 {% block scripts %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function () {
+            console.log('Document ready!');
             $('#score-form').submit(function (event) {
+                console.log('Form submitted!');
                 event.preventDefault();
                 $.ajax({
                     type: 'POST',
@@ -39,7 +32,7 @@ Nutritional Score Calculator
                     success: function (response) {
                         $('#result').html('<p>Score: ' + response.score + ', Nutri score: ' + response['nutri score'] + '</p>');
                     },
-                    error: function (xhr, status, error) {
+                    error: function (xhr) {
                         console.error(xhr.responseText);
                     }
                 });
