@@ -23,13 +23,18 @@
         </div>
 
         <div class="user-icon">
-            {% if current_user.is_authenticated %}
-                <span>{{ current_user.username }}</span> <!-- Display username if logged in -->
-                <img src="/static/images/guest.png" alt="Logged In Icon">
-            {% else %}
-                <span>Guest (Log In)</span> <!-- Display 'Guest' if not logged in -->
-                <img src="/static/images/guest.png" alt="Logged Out Icon">
-            {% endif %}
+        {% if current_user.is_authenticated %}
+        <span>{{ current_user.username }}</span>
+        <a href="/profile">
+            <img src="/static/images/guest.png" alt="Logged In Icon">
+            <span>{{ current_user.username }}</span>
+        </a>
+        {% else %}
+        <span>
+            <a href="/login">Guest (Log In)</a>
+        </span>
+        <img src="/static/images/guest.png" alt="Logged Out Icon">
+        {% endif %}
         </div>
 </div>
 </body>
